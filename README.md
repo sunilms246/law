@@ -9,6 +9,10 @@ Currently covers three domains:
 - **Consumer complaints** — Consumer Protection Act, 2019
 - **Landlord/tenant** — Transfer of Property Act, 1882 (general principles only, no state-specific rent control law yet)
 
+## Live demo
+
+Deployed on Render: **https://law-b533.onrender.com/**
+
 ## How it works
 
 1. You type your situation into the web form
