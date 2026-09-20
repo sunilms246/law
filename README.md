@@ -101,6 +101,8 @@ and generation code doesn't need to change as the dataset grows.
 - Landlord/tenant law is state-specific in India; this prototype only
   covers general central-law principles, not any state's Rent Control Act
 - No user accounts or saved search history yet (planned for phase 2)
+- Deployed on Render's free tier: after ~15 min without traffic the app
+  sleeps and takes about a minute to wake on the next visit
 - This tool gives general legal information, not legal advice — every
   answer should end by pointing the user to a licensed advocate
 
