@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Legal Section Finder (India)</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      max-width: 720px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+    h1 { font-size: 1.5rem; margin-bottom: .25rem; }
+    .subtitle { color: #6b7280; margin-top: 0; }
+    textarea {
+      width: 100%;
+      min-height: 100px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: .75rem;
+      font-size: 1rem;
+      font-family: inherit;
+      box-sizing: border-box;
+    }
+    button {
+      background: #1d4ed8;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: .6rem 1.4rem;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: .5rem;
+    }
+    button:hover { background: #1e40af; }
+    .answer {
+      margin-top: 1.5rem;
+      padding: 1rem 1.25rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      background: #f8fafc;
+      white-space: pre-line;
+    }
+    .matches { margin-top: 1rem; font-size: .9rem; color: #475569; }
+    .matches li { margin-bottom: .25rem; }
+    .disclaimer {
+      margin-top: 2rem;
+      font-size: .85rem;
+      color: #94a3b8;
+      border-top: 1px solid #e2e8f0;
+      padding-top: .75rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Legal Section Finder (India)</h1>
+  <p class="subtitle">Describe your situation in plain language and get the Indian law sections that may apply.</p>
+
+  <form method="post" action="/">
+    <textarea name="query" placeholder="e.g. my landlord won't fix the leaking roof">{{ query }}</textarea>
+    <button type="submit">Find legal sections</button>
+  </form>
+
+  {% if answer %}
+  <div class="answer">{{ answer }}</div>
+  {% endif %}
+
+  {% if matches %}
+  <div class="matches">
+    <strong>Matched sections:</strong>
+    <ul>
+      {% for sec, score in matches %}
+      <li>{{ sec.act }} &middot; Section {{ sec.section }} &middot; {{ sec.title }} (score: {{ "%.2f"|format(score) }})</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  <p class="disclaimer">This tool gives general legal information, not legal advice. Consult a licensed advocate before taking action.</p>
+</body>
+</html>
